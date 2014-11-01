@@ -1,5 +1,6 @@
 $("#login").show();
 $("#app").hide();
+$("#tabs").tabs();
 
 //Authentication with Dropbox
 var client = new Dropbox.Client({key:"iz1dsortzogoweu"});
@@ -17,6 +18,8 @@ if (client.isAuthenticated()) {
 
 $("#login").on("click", client.authenticate());
 
+
+
 var datastoreManager = client.getDatastoreManager();
 datastoreManager.openDefaultDatastore(function (error, datastore) {
     if (error) {
@@ -24,13 +27,18 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
     }
 
    // Let the user read all tasks by printing them to the screen
-	var taskTable = datastore.getTable('tasks');
+	var taskTable = datastore.getTable('names');
 	var results = taskTable.query({completed: false});
 
 	for (var k=0; k<results.length;k++ ) {
         $("#todos").append( "<li>"+results[k].get("taskname") + "</li>");
+        var words = results[k].get("taskname");
+        var iddio = words[0];
+        console.log(iddio + "---" + words);
+        $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
     }
 	$("li").addClass("list-group-item");
+
 
   // Let users add tasks
 	$("#add").on("click", function() {
@@ -43,9 +51,13 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
 
   // As new tasks are added automatically update the task list
 	datastore.recordsChanged.addListener(function (event) {
-    	var records = event.affectedRecordsForTable('tasks');
+    	var records = event.affectedRecordsForTable('names');
     	for (var k=0; k<records.length;k++ ) {
         	$("#todos").append( "<li>"+records[k].get("taskname") + "</li>");
+          var words = results[k].get("taskname");
+          var iddio = words[0];
+          console.log(iddio + "---" + words);
+          $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
     	}
     	$("li").addClass("list-group-item");    
 	});     
