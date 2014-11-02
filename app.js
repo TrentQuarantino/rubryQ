@@ -31,12 +31,12 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
 	var results = taskTable.query({completed: false});
 
 	for (var k=0; k<results.length;k++ ) {
-        $("#todos").append( "<li>"+results[k].get("taskname") + "</li>");
+        //$("#todos").append( "<li>"+results[k].get("taskname") + "</li>");
         var words = results[k].get("taskname");
         var iddio = words[0];
         console.log(iddio + "---" + words);
         $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
-    }
+  }
 	$("li").addClass("list-group-item");
 
 
@@ -47,14 +47,15 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
         	completed: false,
         	created: new Date()
      	});
+      
 	});
 
   // As new tasks are added automatically update the task list
 	datastore.recordsChanged.addListener(function (event) {
     	var records = event.affectedRecordsForTable('names');
     	for (var k=0; k<records.length;k++ ) {
-        	$("#todos").append( "<li>"+records[k].get("taskname") + "</li>");
-          var words = results[k].get("taskname");
+        	//$("#todos").append( "<li>"+records[k].get("taskname") + "</li>");
+          var words = records[k].get("taskname");
           var iddio = words[0];
           console.log(iddio + "---" + words);
           $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
