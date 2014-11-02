@@ -48,8 +48,7 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
         	completed: false,
         	created: new Date()
      	});
-
-	});
+  });
 
   // As new tasks are added automatically update the task list
 	datastore.recordsChanged.addListener(function (event) {
