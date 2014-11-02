@@ -32,6 +32,7 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
 
 	for (var k=0; k<results.length;k++ ) {
         //$("#todos").append( "<li>"+results[k].get("taskname") + "</li>");
+
         var words = results[k].get("taskname");
         var iddio = words[0];
         console.log(iddio + "---" + words);
@@ -47,7 +48,7 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
         	completed: false,
         	created: new Date()
      	});
-      
+
 	});
 
   // As new tasks are added automatically update the task list
@@ -60,6 +61,7 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
           console.log(iddio + "---" + words);
           $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
     	}
-    	$("li").addClass("list-group-item");    
-	});     
+    	$("li").addClass("list-group-item");
+	});
 });
+// No list visualization
