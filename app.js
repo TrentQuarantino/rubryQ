@@ -16,9 +16,7 @@ if (client.isAuthenticated()) {
 }
 
 // Bind authenticate method to your login button and listen for click on button
-
 $("#login").on("click", client.authenticate());
-
 
 var datastoreManager = client.getDatastoreManager();
 
@@ -41,32 +39,14 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
    // Let the user read all tasks by printing them to the screen
 	var taskTable = datastore.getTable('names');
 	var results = taskTable.query({completed: false});
-    //var toDelete = "test";
-    //var toDelete ;
-
 
 	for (var k=0; k<results.length;k++ ) {
-        //$("#todos").append( "<li>"+results[k].get("taskname") + "</li>");
-        //console.log("NEL FOR" + toDelete);
         var words = results[k].get("taskname");
         var risultati = results[k].getId();
         var iddio = words[0];
         console.log(iddio + "---" + words);
-        //console.log(risultati );
-        /*if(words == "asnu") {
-            console.log("L'INDICE" + k);
-
-            var a = k;
-            console.log("var a " + a);
-            //var b = results[a].getSize();
-            //console.log("EL peso = " + b);
-            results[a].deleteRecord();
-        }*/
-
         $("#" +  iddio).append("<p id='paragraph'>"+words +"</p>");
     }
-	    /*$("li").addClass("list-group-item");
-        console.log("UN RISULTATO" + results[4].get("taskname"));*/
 
   // Let users add tasks
 	$("#add").on("click", function() {
@@ -99,14 +79,10 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
 
     });
 
-
-    //console.log("FUORI" + toDelete);
-
   // As new tasks are added automatically update the task list
 	datastore.recordsChanged.addListener(function (event) {
     	var records = event.affectedRecordsForTable('names');
     	for (var k=0; k<records.length;k++ ) {
-        	//$("#todos").append( "<li>"+records[k].get("taskname") + "</li>");
             modrec = records[k];
             if (!modrec.isDeleted()) {
                 var words = records[k].get("taskname");
@@ -115,14 +91,12 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
 
                 $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
             }
-
-
     	}
-    	//$("li").addClass("list-group-item");
 
+        //lista delle tabelle
         var listu = datastore.listTableIds();
         for (y in listu) {
-            console.log(listu[y]);
+            console.log("Listu" + listu[y]);
         }
     });
 });
