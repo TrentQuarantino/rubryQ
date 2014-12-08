@@ -1,0 +1,67 @@
+#app {
+    width: 80%;
+    margin: auto;
+}
+#tabs{
+    /*width:500px;*/
+	position: relative;
+	padding-right: 6.5em;
+    width: 80%;
+	margin: auto;
+}
+#tabs .ui-widget-content {
+    background: white;
+}
+
+#tabs .ui-tabs-nav {
+    position: absolute;
+	right: 0.25em;
+	top: 0.25em;
+	bottom: 0.25em;
+	width: 4em;
+	padding: 0.2em 0.2em 0.2em 0em;
+}
+#tabs .ui-tabs-nav li {
+	width: 100%;
+	border-left: none;
+	border-bottom-width: 1px !important;
+	-moz-border-radius: 0px 4px 4px 0px;
+	-webkit-border-radius: 0px 4px 4px 0px;
+	border-radius: 0px 4px 4px 0px;
+	overflow: hidden;
+}
+#tabs .ui-tabs-nav li.ui-tabs-selected,
+#tabs .ui-tabs-nav li.ui-state-active {
+	left: -1px;
+	border-left: 1px solid transparent;
+}
+#tabs .ui-tabs-nav li a {
+	width: 100%;
+}
+#tabs .ui-tabs-panel {
+	background: white;
+}
+#tabs > div {
+	height: 64em;
+}
+#tabs-nohdr {
+    padding: 0px;
+    /*background: none;*/
+    background: white;
+    border-width: 0px;
+}
+#tabs-nohdr .ui-tabs-nav {
+    padding-left: 0px;
+    /*background: transparent;*/
+    background: white;
+    border-width: 0px 0px 1px 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+#tabs-nohdr .ui-tabs-panel {
+    /*background: #f5f3e5 url(http://code.jquery.com/ui/1.8.23/themes/south-street/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png) repeat-x scroll 50% top;*/
+    border-width: 0px 1px 1px 1px;
+    background: white;
+}
+

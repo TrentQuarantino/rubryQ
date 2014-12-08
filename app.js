@@ -1,7 +1,14 @@
 $("#login").show();
 $("#app").hide();
-$("#tabs").tabs();
-
+//$("#tabs").tabs();
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+for (var k = 0; k < alphabet.length; ++k) {
+    c = alphabet[k];
+    cc = c.toUpperCase() + c;
+    $("#tabs ul").append('<li><a href="#' + c +'">'+ cc +'</a></li>');
+    $("#tabs").append('<div id="' + c + '"><p>toca ala -- ' + cc + '</p></div>');
+}
+$( "#tabs" ).tabs();
 
 //Authentication with Dropbox
 var client = new Dropbox.Client({key:"iz1dsortzogoweu"});
@@ -42,19 +49,27 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
 
 	for (var k=0; k<results.length;k++ ) {
         var words = results[k].get("taskname");
+        var traduz = results[k].get("tradname");
         var risultati = results[k].getId();
         var iddio = words[0];
         console.log(iddio + "---" + words);
-        $("#" +  iddio).append("<p id='paragraph'>"+words +"</p>");
+        $("#" +  iddio).append("<p id='paragraph'>"+words +' = ' + traduz +"</p>");
     }
 
   // Let users add tasks
 	$("#add").on("click", function() {
+        var newTask = $("#newTask").val();
+        var newTrad = $("#newTrad").val();
+        console.log("--newTrad--" + newTrad);
+        //var newTask = voc + " = " + tra;
     	taskTable.insert({
-        	taskname: $("#newTask").val(),
+        	taskname: newTask,
+            tradname: newTrad,
         	completed: false,
         	created: new Date()
      	});
+        $("#newTask").val("");
+        $("#newTrad").val("");
 	});
 
     $("#delete").on("click", function() {
@@ -68,28 +83,30 @@ datastoreManager.openDefaultDatastore(function (error, datastore) {
                 console.log("L'INDICE" + ind );
                 //console.log("elPesa" + results[ind].getSize());
                 rec = results[ind];
-                //var iddio = rec[0];
+                var iddio = tname[0];
                 results.splice(ind,1);
                 rec.deleteRecord();
 
-                $('p:contains("' + tname +'")').remove();
+                $('#' + iddio + ' p:contains("' + tname +'")').remove();
                 break;
             }
         }
-
+        $("#deleteble").val("");
     });
 
   // As new tasks are added automatically update the task list
 	datastore.recordsChanged.addListener(function (event) {
-    	var records = event.affectedRecordsForTable('names');
-    	for (var k=0; k<records.length;k++ ) {
-            modrec = records[k];
+    	var modrecords = event.affectedRecordsForTable('names');
+    	for (var k=0; k<modrecords.length;k++ ) {
+            modrec = modrecords[k];
             if (!modrec.isDeleted()) {
-                var words = records[k].get("taskname");
+                var words = modrec.get("taskname");
+                var traduz = modrec.get("tradname");
                 var iddio = words[0];
                 console.log(iddio + "---" + words);
+                results.push(modrec);
 
-                $("#" +  iddio).append("<p id='paragraph'>"+words + "</p>");
+                $("#" +  iddio).append("<p id='paragraph'>"+words +' = ' + traduz + "</p>");
             }
     	}
 
