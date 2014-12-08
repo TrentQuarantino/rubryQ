@@ -1,88 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Rubry</title>
-	    <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js" type="text/javascript"></script>
-    	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    	<link type="text/css" href="ui-lightness/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
-    	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="js/jquery-ui-1.8.20.custom.min.js"></script>
- 
-    	<script src="app.js" defer="defer"></script>
-    	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Rubry</title>
+    <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js" type="text/javascript"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui-1.8.20.custom.min.js"></script>
+    <link type="text/css" href="jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--<script src="crea.js" defer="defer"></script>-->
+    <script src="app.js" defer="defer"></script>
+    <link rel="stylesheet" href="stilitab.css" type="text/css" />
 </head>
 <body>
-	<div id="login" class="btn btn-primary">Login with Dropbox</div>
-	<div id="app" class="well">
-		<ul id="todos" class="list-group">
-
-		</ul>
-		<input id="newTask" placeholder="Add Task"></input>
-		<div id="add" class="btn btn-primary">Add Todo</div>
-	</div>
-	<div id="tabs">
-            <ul>
-                <li><a href="#a">Aa</a></li>
-                <li><a href="#b">Bb</a></li>
-                <li><a href="#c">Cc</a></li>
-                <li><a href="#d">Dd</a></li>
-				<li><a href="#e">Ee</a></li>
-				<li><a href="#f">Ff</a></li>
-				<li><a href="#g">Gg</a></li>
-				<li><a href="#h">Hh</a></li>
-				<li><a href="#i">Ii</a></li>
-                <li><a href="#j">Jj</a></li>
-                <li><a href="#k">Kk</a></li>
-                <li><a href="#l">Ll</a></li>
-                <li><a href="#m">Mm</a></li>
-                <li><a href="#n">Nn</a></li>
-                <li><a href="#o">Oo</a></li>
-            </ul>
-            <div id="a">
-                <p>so la Aa</p>
-            </div>
-            <div id="b">
-                <p>toca ala bbBb</p>
-            </div>
-            <div id="c">
-                <p>vedom la Cccc</p>
-            </div>
-            <div id="d">
-                <p></p>
-            </div>
-            <div id="e">
-                <p></p>
-            </div>                                
-            <div id="f">
-                <p></p>
-            </div>        
-	    	<div id="g">
-                <p></p>
-            </div>                      
-            <div id="h">
-                <p></p>
-            </div>                                  
-	    	<div id="i">
-                <p> </p>
-            </div>
-            <div id="j">
-                <p></p>
-            </div>                                   
-	    	<div id="k">
-                <p></p>
-            </div>
-            <div id="l">
-                <p></p>
-            </div>                                    
-	    	<div id="m">
-                <p></p>
-            </div>                                    
-	    	<div id="n">
-                <p></p>
-            </div>                                    
-	    	<div id="o">
-                <p></p>
-            </div>      
+<div id="login" class="btn btn-primary">Login with Dropbox</div>
+<div id="app" class="well">
+    <input id="newTask" placeholder="Add Task"></input>
+    <input id="newTrad" placeholder="Add trad"></input>
+    <div id="add" class="btn btn-primary">Add Todo</div>
+    <input id="deleteble" placeholder="words to delete"></input>
+    <div id="delete" class="btn btn-primary">Delete</div>
+    <!--<input id="res" placeholder="hidden input"></input>-->
+</div>
+<div id="tabs">
+    <ul>
+      <li><a href="#cover">TRA</a></li>
+    </ul>
+    <div id="cover">
+      <p>
+        <iframe width="700px" height="400px" src="http://www.bing.com/translator/"></iframe>
+      </p>
     </div>
-</body>
-</html>
+</div>
